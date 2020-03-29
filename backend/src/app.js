@@ -5,6 +5,7 @@ const express = require('express');
 
 const cors = require('cors')
 
+const { errors } = require('celebrate');
 /**
  * ./routes -> referencia arquivo na mesma pasta
  */
@@ -27,10 +28,10 @@ app.use(express.json())
  */
 app.use(routes)
 
-
-
 /**
- * Expõe aplicação
+ * Padroniza retorno dos erros
  */
-app.listen(3333);
+app.use(errors());
+
+module.exports = app;
 
